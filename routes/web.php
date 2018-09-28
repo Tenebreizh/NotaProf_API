@@ -14,3 +14,4 @@
 $router->get('/api/appreciations', 'AppreciationController@index'); //All appreciations
 $router->post('/api/appreciations', 'AppreciationController@store'); //Create appreciation
 $router->get('/api/appreciations/{id}', 'AppreciationController@show'); //Show specific appreciation
+$router->delete('/api/appreciations/{id}', 'AppreciationController@destroy'); //Delete specific appreciation

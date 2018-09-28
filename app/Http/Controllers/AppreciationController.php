@@ -54,4 +54,29 @@ class AppreciationController extends Controller
             ]);
         }
     }
+
+    /**
+     * Delete specific appreciation
+     *
+     * @param int $id
+     * @return string
+     */
+    public function destroy($id)
+    {
+        try
+        {
+            $appreciation = Appreciation::findOrFail($id);
+            $appreciation->delete();
+
+            return response()->json([
+                'message' => 'success'
+            ]);
+        } 
+        catch(\Exception $e) 
+        {
+            return response()->json([
+                'message' => 'error'
+            ]);
+        }
+    }
 }
