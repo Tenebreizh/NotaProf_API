@@ -54,6 +54,33 @@ class AppreciationController extends Controller
             ]);
         }
     }
+    
+    /**
+     * Update specific appreciation
+     *
+     * @param int $id
+     * @param Request $request
+     * @return Appreciation $appreciation
+     */
+    public function update($id, Request $request)
+    {
+        try
+        {
+            $appreciation = Appreciation::findOrFail($id);
+
+            $appreciation->content = $request->content;
+            $appreciation->category_id = $request->category_id;
+            $appreciation->save();
+            
+            return $appreciation;
+        } 
+        catch(\Exception $e) 
+        {
+            return response()->json([
+                'message' => 'error'
+            ]);
+        }
+    }
 
     /**
      * Delete specific appreciation
