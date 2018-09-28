@@ -15,4 +15,5 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->get('/api/appreciations', 'AppreciationController@index');
+$router->get('/api/appreciations', 'AppreciationController@index'); //All appreciations
+$router->post('/api/appreciations', 'AppreciationController@store'); //Create appreciation
