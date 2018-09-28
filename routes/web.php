@@ -14,6 +14,11 @@
 $router->get('/', 'HomeController@index'); // Show a simple homepage
 
 
+/*
+/--------------------
+/    API routes
+/--------------------
+*/
 $router->get('/api/appreciations', 'AppreciationController@index'); //All appreciations
 $router->post('/api/appreciations', 'AppreciationController@store'); //Create appreciation
 $router->get('/api/appreciations/{id}', 'AppreciationController@show'); //Show specific appreciation
