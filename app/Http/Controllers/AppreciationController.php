@@ -8,11 +8,22 @@ use App\Appreciation;
 class AppreciationController extends Controller
 {
 
+    /**
+     * Get all appreciations
+     *
+     * @return Appreciation
+     */
     public function index()
     {
         return Appreciation::all();
     }
 
+    /**
+     * Store new appreciation
+     *
+     * @param Request $request
+     * @return Appreciation $appreciation
+     */
     public function store(Request $request)
     {
         $appreciation = Appreciation::create([
@@ -21,5 +32,26 @@ class AppreciationController extends Controller
         ]);
 
         return $appreciation;
+    }
+
+    /**
+     * Get specific appreciation
+     *
+     * @param int $id
+     * @return Appreciation $appreciation
+     */
+    public function show($id)
+    {
+        try
+        {
+            $appreciation = Appreciation::findOrFail($id);
+            return $appreciation;
+        } 
+        catch(\Exception $e) 
+        {
+            return response()->json([
+                'message' => 'error'
+            ]);
+        }
     }
 }
