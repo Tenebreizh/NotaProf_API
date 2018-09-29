@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Http\Request;
 
 class ExampleController extends Controller
 {
@@ -14,5 +15,13 @@ class ExampleController extends Controller
         //
     }
 
-    //
+    /**
+     * Undocumented function
+     *
+     * @return void
+     */
+    public function index()
+    {
+        //
+    }
 }
