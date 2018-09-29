@@ -17,7 +17,7 @@ class AppreciationSeeder extends Seeder
         { 
             Appreciation::create([
                 'content' => $faker->sentence(6),
-                'category_id' => null,
+                'category_id' => rand(1,5),
             ]);
         }
     }

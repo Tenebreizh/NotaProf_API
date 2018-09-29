@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAppreciationsTable extends Migration
+class CreateCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,17 @@ class CreateAppreciationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('appreciations', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->integer('id', true);
-            $table->string('content');
-            $table->integer('category_id');
+            $table->string('name');
             $table->timestamps();
+        });
+
+        Schema::table('appreciations', function (Blueprint $table)
+        {
+            $table->foreign('category_id')
+                  ->references('id')->on('categories')
+                  ->onDelete('cascade');
         });
     }
 
@@ -28,6 +34,6 @@ class CreateAppreciationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('appreciations');
+        Schema::dropIfExists('categories');
     }
 }
