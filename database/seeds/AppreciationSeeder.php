@@ -13,12 +13,6 @@ class AppreciationSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        for ($i=0; $i < 12; $i++) 
-        { 
-            Appreciation::create([
-                'content' => $faker->sentence(6),
-                'category_id' => rand(1,5),
-            ]);
-        }
+        factory('App\Appreciation',12)->create();
     }
 }

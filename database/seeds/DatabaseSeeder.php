@@ -11,7 +11,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        // Create fake categories
         $this->call('CategorySeeder');
+
+        // Create fake appreciations
         $this->call('AppreciationSeeder');
     }
 }
