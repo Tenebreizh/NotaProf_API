@@ -12,7 +12,7 @@ class Appreciation extends Model
      * @var array
      */
     protected $fillable = [
-        'content', 'category_id',
+        'content','level', 'category_id',
     ];
 
     public function category()

@@ -16,6 +16,7 @@ class CreateAppreciationsTable extends Migration
         Schema::create('appreciations', function (Blueprint $table) {
             $table->integer('id', true);
             $table->string('content');
+            $table->char('level', 1); // Only -, +, =
             $table->integer('category_id');
             $table->timestamps();
         });

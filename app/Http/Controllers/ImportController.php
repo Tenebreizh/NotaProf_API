@@ -17,24 +17,22 @@ class ImportController extends Controller
         $json = file_get_contents(base_path('database/data/appreciations.json'));
         $data = json_decode($json, true);
 
-
-        foreach ($data as $appreciation) 
+        foreach ($data as $category) 
         {
-            // Create a new category for each element
-            $category = Category::create([
-                'name' => $appreciation['name']
+            // Create a category
+            $new_cat = Category::create([
+                'name' => $category['name'],
             ]);
 
-            // Create a new appreciation for each element in the 'content' array
-            foreach ($appreciation['content'] as $text) 
+            foreach ($category['appreciations'] as $appreciation) 
             {
+                // For each object create an appreciation
                 Appreciation::create([
-                    'content' => $text,
-                    'category_id' => $category->id
+                    'level' => $appreciation['level'],
+                    'content' => $appreciation['content'],
+                    'category_id' => $new_cat->id
                 ]);
             }
         }
-
-        return true;
     }
 }

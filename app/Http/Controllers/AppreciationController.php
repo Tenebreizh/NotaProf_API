@@ -28,6 +28,7 @@ class AppreciationController extends Controller
     {
         $appreciation = Appreciation::create([
             'content' => $request->content,
+            'level' => $request->level,
             'category_id' => $request->category_id,
         ]);
 
@@ -69,6 +70,7 @@ class AppreciationController extends Controller
             $appreciation = Appreciation::findOrFail($id);
 
             $appreciation->content = $request->content;
+            $appreciation->level = $request->level;
             $appreciation->category_id = $request->category_id;
             $appreciation->save();
             
