@@ -20,6 +20,13 @@ class CreateAppreciationsTable extends Migration
             $table->integer('category_id');
             $table->timestamps();
         });
+
+        Schema::table('appreciations', function (Blueprint $table)
+        {
+            $table->foreign('category_id')
+                  ->references('id')->on('categories')
+                  ->onDelete('cascade');
+        });
     }
 
     /**
