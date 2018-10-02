@@ -4,25 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Appreciation;
+use App\Category;
 
 class AppreciationController extends Controller
 {
-
-    /**
-     * Content of json file
-     *
-     * @var [type]
-     */
-    private $data;
-    
-    public function __construct()
-    {
-        // Get the json file
-        $json = file_get_contents(base_path('database/data/appreciations.json'));
-        $data = json_decode($json, true);
-        $this->data = $data;
-    }
-
     /**
      * Get all appreciations
      *
@@ -34,7 +19,7 @@ class AppreciationController extends Controller
     }
 
     /**
-     * Store new appreciation
+     * Store new appreciation [No need right now]
      *
      * @param Request $request
      * @return Appreciation $appreciation
@@ -55,10 +40,15 @@ class AppreciationController extends Controller
      *
      * @return void
      */
-    public function storeAppreciations()
-    {   
-        foreach ($this->data as $category) 
+    public static function storeAppreciations()
+    {
+        // Get the json file
+        $json = file_get_contents(base_path('database/data/appreciations.json'));
+        $data = json_decode($json, true);
+
+        foreach ($data as $category) 
         {
+
             // Create a category
             $new_cat = Category::create([
                 'name' => $category['name'],
