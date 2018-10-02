@@ -13,7 +13,6 @@
 
 $router->get('/', 'HomeController@index'); // Show a simple homepage
 
-
 /*
 /--------------------
 /    API routes

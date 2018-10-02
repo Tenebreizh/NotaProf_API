@@ -9,6 +9,21 @@ class AppreciationController extends Controller
 {
 
     /**
+     * Content of json file
+     *
+     * @var [type]
+     */
+    private $data;
+    
+    public function __construct()
+    {
+        // Get the json file
+        $json = file_get_contents(base_path('database/data/appreciations.json'));
+        $data = json_decode($json, true);
+        $this->data = $data;
+    }
+
+    /**
      * Get all appreciations
      *
      * @return Appreciation
@@ -24,7 +39,7 @@ class AppreciationController extends Controller
      * @param Request $request
      * @return Appreciation $appreciation
      */
-    public function store(Request $request)
+    /* public function store(Request $request)
     {
         $appreciation = Appreciation::create([
             'content' => $request->content,
@@ -33,6 +48,32 @@ class AppreciationController extends Controller
         ]);
 
         return $appreciation;
+    } */
+        
+    /**
+     * Store base appreciations in the database
+     *
+     * @return void
+     */
+    public function storeAppreciations()
+    {   
+        foreach ($this->data as $category) 
+        {
+            // Create a category
+            $new_cat = Category::create([
+                'name' => $category['name'],
+            ]);
+
+            foreach ($category['appreciations'] as $appreciation) 
+            {
+                // For each object create an appreciation
+                Appreciation::create([
+                    'level' => $appreciation['level'],
+                    'content' => $appreciation['content'],
+                    'category_id' => $new_cat->id
+                ]);
+            }
+        }
     }
 
     /**
