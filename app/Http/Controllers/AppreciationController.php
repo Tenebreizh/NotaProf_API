@@ -51,8 +51,9 @@ class AppreciationController extends Controller
         catch(\Exception $e) 
         {
             return response()->json([
-                'message' => 'error'
-            ]);
+                'message' => 'error',
+                'description' => 'Not found...'
+            ], 404);
         }
     }
     
@@ -79,8 +80,9 @@ class AppreciationController extends Controller
         catch(\Exception $e) 
         {
             return response()->json([
-                'message' => 'error'
-            ]);
+                'message' => 'error',
+                'description' => 'Not found...'
+            ], 404);
         }
     }
 
@@ -104,8 +106,9 @@ class AppreciationController extends Controller
         catch(\Exception $e) 
         {
             return response()->json([
-                'message' => 'error'
-            ]);
+                'message' => 'error',
+                'description' => 'Not found...'
+            ], 404);
         }
     }
 }

@@ -50,8 +50,8 @@ class CategoryController extends Controller
         {
             return response()->json([
                 'message' => 'error',
-                'description' => 'Unable to find this category ...'
-            ]);
+                'description' => 'Not found...'
+            ], 404);
         }
     }
     
@@ -77,8 +77,8 @@ class CategoryController extends Controller
         {
             return response()->json([
                 'message' => 'error',
-                'description' => 'Unable to find this category ...'
-            ]);
+                'description' => 'Not found...'
+            ], 404);
         }
     }
 
@@ -103,8 +103,8 @@ class CategoryController extends Controller
         {
             return response()->json([
                 'message' => 'error',
-                'description' => 'Unable to find this category ...'
-            ]);
+                'description' => 'Not found...'
+            ], 404);
         }
     }
 }
