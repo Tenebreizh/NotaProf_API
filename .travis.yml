@@ -17,6 +17,7 @@ before_script:
     - cp .env.travis .env
 
 script:
+    - php artisan migrate
     - php artisan appreciation:store
     - vendor/bin/phpunit
 
