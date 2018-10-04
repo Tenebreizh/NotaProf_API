@@ -17,7 +17,7 @@ before_script:
     - cp .env.travis .env
 
 script:
-    - php artisan migrate --seed
+    - php artisan appreciation:store
     - vendor/bin/phpunit
 
 notifications:
